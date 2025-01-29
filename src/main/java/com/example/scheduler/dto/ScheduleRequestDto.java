@@ -1,4 +1,4 @@
-package com.example.todoapp.dto;
+package com.example.scheduler.dto;
 
 public class ScheduleRequestDto {
 }
