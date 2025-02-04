@@ -10,9 +10,25 @@ import java.time.LocalDateTime;
 public class Schedule {
     private Long schedule_id;
     private String todo;
-    // how to define a 'many-to-one' relationship using JDBC????
-    private Long user_id;
+    private User user;
+    private String writer;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+
+    public Schedule(String todo, User user) {
+        this.todo = todo;
+        this.user = user;
+        this.createdAt = LocalDateTime.now();
+        this.updatedAt = LocalDateTime.now();
+    }
+
+    // DB 조회용 생성자
+    public Schedule(Long schedule_id, String todo, Long user_id, LocalDateTime createdAt, LocalDateTime updatedAt) {
+        this.schedule_id = schedule_id;
+        this.todo = todo;
+        this.user = new User(user_id);
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

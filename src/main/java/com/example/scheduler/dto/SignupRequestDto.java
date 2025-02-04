@@ -5,8 +5,8 @@ import lombok.Getter;
 
 @Getter
 @AllArgsConstructor
-public class ScheduleRequestDto {
-    private String todo;
-    // String writer -> user_id
-    private Long user_id;
+public class SignupRequestDto {
+    private String email;
+    private String name;
+    private String password;
 }
