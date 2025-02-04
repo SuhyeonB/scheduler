@@ -2,7 +2,6 @@ package com.example.scheduler.repository;
 
 import com.example.scheduler.dto.ScheduleResponseDto;
 import com.example.scheduler.entity.Schedule;
-import com.example.scheduler.entity.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -97,7 +96,7 @@ public class JdbcScheduleRepository implements ScheduleRepository{
     @Override
     public int updateSchedule(Long id, String todo) {
         LocalDateTime now = LocalDateTime.now();
-        return jdbcTemplate.update("update schedule set todo = ?, updatedAt = ? where schedule_id = ?", todo, now, id);
+        return jdbcTemplate.update("update schedule set todo = ?, updatedAt = ? where schedule_id = ?", todo, Timestamp.valueOf(now), id);
     }
 
     @Override

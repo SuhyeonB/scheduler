@@ -15,6 +15,7 @@ import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 @Repository
 public class JdbcUserRepository implements UserRepository{
@@ -54,6 +55,13 @@ public class JdbcUserRepository implements UserRepository{
     @Override
     public int deleteUser(Long user_id) {
         return jdbcTemplate.update("delete from user where user_id = ?", user_id);
+    }
+
+    @Override
+    public Optional<User> findById(Long user_id) {
+        List<User> users = jdbcTemplate.query("select * from user where user_id = ?", userRowMapper(), user_id);
+
+        return users.stream().findAny();
     }
 
     private RowMapper<User> userRowMapper() {
