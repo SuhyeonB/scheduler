@@ -15,3 +15,13 @@ Lv2. 일정 수정 및 삭제
 
 Lv3. 연관 관계 설정
 SchedulerRepsoitoryImpl에서 sql 문을 수행할 때, user 테이블과 scheduler 테이블을 join하는 방식으로 작성자와 일정을 연결하였다.
+
+
+동작 화면
+![image](https://github.com/user-attachments/assets/ca8ecae2-4467-4a53-8766-8ff4ff06b3ab)
+
+![image](https://github.com/user-attachments/assets/609e2ec9-d293-41be-8caf-7fa4a2e35d81)
+
+![image](https://github.com/user-attachments/assets/5d3c20be-9611-4afb-b5a3-86adfde96bcd)
+
+![image](https://github.com/user-attachments/assets/ef8554ab-407a-468b-ad86-245104c31d10)
