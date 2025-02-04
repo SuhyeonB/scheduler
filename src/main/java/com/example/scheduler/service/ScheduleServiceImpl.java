@@ -89,7 +89,22 @@ public class ScheduleServiceImpl implements ScheduleService{
     }
 
     @Override
-    public ScheduleResponseDto deleteSchedule(Long id) {
+    public ScheduleResponseDto deleteSchedule(Long id, String password) {
+        //삭제할 일정 조회
+        Schedule schedule = scheduleRepository.findByIdOrElseThrow(id);
+
+        // 일정 소유자(user_id) 가져오기
+        Long userId = schedule.getUser().getUser_id();
+
+        // user_id를 사용해 사용자 조회
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "User does not exist"));
+
+        // 비밀번호 검증
+        if (!user.getPassword().equals(password)) {
+            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, "Invalid password");
+        }
+
         int deletedRow = scheduleRepository.deleteSchedule(id);
 
         if (deletedRow == 0) {

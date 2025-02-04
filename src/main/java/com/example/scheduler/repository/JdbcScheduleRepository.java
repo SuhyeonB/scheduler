@@ -43,7 +43,7 @@ public class JdbcScheduleRepository implements ScheduleRepository{
         // user_name 가져오기
         String username = jdbcTemplate.queryForObject("SELECT u.name FROM schedule s JOIN user u ON s.user_user_id = u.user_id WHERE s.schedule_id = ?", String.class, key.longValue());
 
-        return new ScheduleResponseDto(key.longValue(), schedule.getTodo(), schedule.getUser().getName(), schedule.getUpdatedAt());
+        return new ScheduleResponseDto(key.longValue(), schedule.getTodo(), username, schedule.getUpdatedAt());
     }
 
     @Override

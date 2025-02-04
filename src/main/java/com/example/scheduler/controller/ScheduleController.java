@@ -34,24 +34,24 @@ public class ScheduleController {
         return new ResponseEntity<>(scheduleService.findById(schedule_id), HttpStatus.OK);
     }
 
-    @GetMapping("/date")
+    @GetMapping
     public List<ScheduleResponseDto> findByDate(@RequestParam String date){
         return scheduleService.findByDate(date);
     }
 
-    @GetMapping("/writer")
+    @GetMapping
     public List<ScheduleResponseDto> findByWriter(@RequestParam String writer){
         return scheduleService.findByWriter(writer);
     }
 
     @PutMapping("/{schedule_id}")
     public ResponseEntity<ScheduleResponseDto> updateSchedule(@PathVariable Long schedule_id, @RequestBody ScheduleUpdateDto dto) {
-        return scheduleService.updateSchedule(schedule_id, dto);
+        return new ResponseEntity<>(scheduleService.updateSchedule(schedule_id, dto), HttpStatus.OK);
     }
 
     @DeleteMapping("/{schedule_id}")
-    public ResponseEntity<ScheduleResponseDto> deleteSchedule(@PathVariable Long schedule_id) {
-        scheduleService.deleteSchedule(schedule_id);
+    public ResponseEntity<ScheduleResponseDto> deleteSchedule(@PathVariable Long schedule_id, @RequestBody String password) {
+        scheduleService.deleteSchedule(schedule_id, password);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

@@ -13,5 +13,5 @@ public interface ScheduleService {
     List<ScheduleResponseDto> findByDate(String date);
     List<ScheduleResponseDto> findByWriter(String writer);
     ScheduleResponseDto updateSchedule(Long id, ScheduleUpdateDto dto);
-    ScheduleResponseDto deleteSchedule(Long id);
+    ScheduleResponseDto deleteSchedule(Long id, String password);
 }
